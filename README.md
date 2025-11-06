@@ -20,10 +20,18 @@
 - Easy deployment to **Vercel**.
 
 > Screenshots:
-> <img width="3693" height="2161" alt="image" src="https://github.com/user-attachments/assets/912a08ab-b336-41b0-ab32-dd26cda1415d" />
+
+<img width="3686" height="2140" alt="image" src="https://github.com/user-attachments/assets/721b715f-8443-4ee2-ad55-aa4d24bf43d5" />
+
+<img width="3686" height="2140" alt="image" src="https://github.com/user-attachments/assets/278e563d-64d8-4eb5-9989-6728eaee06c6" />
+
+<img width="651" height="820" alt="image" src="https://github.com/user-attachments/assets/5f5a26a0-4e51-43c2-8d6c-94e280dfbc1d" />
+
+<img width="3691" height="2143" alt="image" src="https://github.com/user-attachments/assets/2496d05e-77ce-4a2b-ac3a-0c8a01679839" />
 
 
-> <img width="3693" height="2161" alt="image" src="https://github.com/user-attachments/assets/f8ded3d0-4b55-4c9f-be64-ef034ae57368" />
+
+
 
 ---
 
