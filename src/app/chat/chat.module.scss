@@ -9,7 +9,7 @@ $mistral-yellow: #FFD800;
 $mistral-beige-light: #FFFAEB;
 $mistral-beige-medium: #FFF0C3;
 $mistral-beige-dark: #E9E2CB;
-$mistral-black: #000000;
+$mistral-black: #333232;
 $mistral-black-tinted: #1E1E1E;
 
 .chatPageWrapper {
@@ -395,11 +395,65 @@ $mistral-black-tinted: #1E1E1E;
 .logoImage {
   width: 200px;
   height: 200px;
-  filter: drop-shadow(0 4px 20px rgba(225, 5, 0, 0.3));
-  transition: transform 0.3s ease;
+
+  // Rainbow gradient background
+  background: linear-gradient(
+    90deg,
+    #E10500 0%,
+    #FA500F 25%,
+    #FF8205 50%,
+    #FFAF00 75%,
+    #FFD800 100%
+  );
+
+  // Use SVG logo as mask (so gradient shows only inside)
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: center;
+
+  // 🌟 Yellow glow shadow
+  filter: drop-shadow(0px 0px 25px rgba(255, 216, 0, 0.9));
+
+  transition: transform 0.3s ease, filter 0.3s ease;
 
   &:hover {
     transform: scale(1.05);
+    filter: drop-shadow(0px 0px 35px rgba(255, 216, 0, 1));
+  }
+}
+
+// Light mode logo mask
+.light .logoImage {
+  -webkit-mask-image: url("/mistral-brand-asset/m-black.svg");
+  mask-image: url("/mistral-brand-asset/m-black.svg");
+}
+
+// Dark mode logo mask
+.dark .logoImage {
+  -webkit-mask-image: url("/mistral-brand-asset/m-white.svg");
+  mask-image: url("/mistral-brand-asset/m-white.svg");
+}
+
+
+.welcomeMessage {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--text-primary, #333);
+  animation: fadeIn 1s ease-in-out;
+   text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

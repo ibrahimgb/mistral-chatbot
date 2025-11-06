@@ -374,17 +374,18 @@ export default function ChatPage() {
 
       <div className={styles.chatWrapper}>
 
-        {messages.length === 0 && (
-          <div className={styles.logoContainer}>
-            <div className={styles.mistralLogo}>
-              <img 
-                src={darkMode ? "/mistral-brand-asset/m-white.svg" : "/mistral-brand-asset/m-black.svg"} 
-                alt="Mistral AI Logo" 
-                className={styles.logoImage}
-              />
-            </div>
-          </div>
-        )}
+{messages.length === 0 && (
+  <div className={styles.emptyState}>
+    <div
+      className={`${styles.mistralLogo} ${darkMode ? styles.dark : styles.light}`}
+    >
+      <div className={styles.logoImage}></div>
+    </div>
+
+    <h2 className={styles.welcomeMessage}>How can I help you today?</h2>
+  </div>
+)}
+
 
         <div className={styles.messagesContainer}>
           {messages.map((msg, i) => (
@@ -415,9 +416,6 @@ export default function ChatPage() {
               alt="Mistral" 
               className={styles.inputIcon}
             />
-            <button className={styles.newChatIconBtn} onClick={createNewConversation} title="New Chat">
-              <FontAwesomeIcon icon={faPlus} />
-            </button>
             <textarea
               className={styles.chatInput}
               placeholder="Ask Mistral anything"
