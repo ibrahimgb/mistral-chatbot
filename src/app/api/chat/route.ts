@@ -3,7 +3,9 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const { messages, model } = (await req.json()) as {
+    const body = await req.json()
+    console.log(body)
+    const { messages, model } = ( body) as {
       messages: ChatMessage[];
       model: string;
     };

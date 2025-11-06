@@ -1,104 +1,139 @@
 @use "../../styles/variables" as *;
 
+// Mistral Brand Colors
+$mistral-red: #E10500;
+$mistral-orange-dark: #FA500F;
+$mistral-orange: #FF8205;
+$mistral-orange-light: #FFAF00;
+$mistral-yellow: #FFD800;
+$mistral-beige-light: #FFFAEB;
+$mistral-beige-medium: #FFF0C3;
+$mistral-beige-dark: #E9E2CB;
+$mistral-black: #000000;
+$mistral-black-tinted: #1E1E1E;
+
 .chatPageWrapper {
   position: relative;
   height: 100vh;
   width: 100vw;
-  background-color: $chat-bg;
-  color: $text-color;
+  background-color: $mistral-beige-light;
+  color: $mistral-black;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 
   &.dark {
-    background-color: $chat-dark-bg;
-    color: $text-dark;
+    background-color: $mistral-black;
+    color: $mistral-beige-light;
 
     .chatWrapper,
     .sidebar {
-      background-color: $chat-dark-bg;
+      background-color: transparent;
     }
 
     .assistant {
-      background-color: $assistant-dark-bg;
-      color: $text-dark;
-    }
-
-    .chatInput {
-      background-color: $input-dark-bg;
-      color: $text-dark;
-      border: 1px solid $input-dark-border;
+      background-color: rgba(30, 30, 30, 0.6);
+      color: $mistral-beige-light;
     }
 
     .sidebar {
-      border-right: 1px solid $input-dark-border;
-    }
+      background-color: $mistral-black-tinted;
+      border-right: 1px solid rgba(255, 216, 0, 0.1);
 
-    .sidebarHeader,
-    .searchContainer {
-      border-bottom: 1px solid $input-dark-border;
-    }
+      .sidebarHeader {
+        background-color: $mistral-black-tinted;
+        border-bottom: 1px solid rgba(255, 216, 0, 0.1);
 
-    .searchContainer {
-      background-color: $chat-dark-bg;
-    }
-
-    .searchInput {
-      background-color: $input-dark-bg;
-      color: $text-dark;
-      border: 1px solid $input-dark-border;
-
-      &::placeholder {
-        color: rgba(255, 255, 255, 0.5);
+        h2 {
+          color: $mistral-beige-light;
+        }
       }
-    }
 
-    .searchIcon,
-    .clearSearchBtn {
-      color: rgba(255, 255, 255, 0.5);
-    }
+      .searchContainer {
+        background-color: $mistral-black-tinted;
+        border-bottom: 1px solid rgba(255, 216, 0, 0.1);
 
-    .clearSearchBtn:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      color: $text-dark;
+        .searchInputWrapper {
+          .searchIcon {
+            color: $mistral-beige-medium;
+          }
+
+          .searchInput {
+            background-color: rgba(30, 30, 30, 0.6);
+            color: $mistral-beige-light;
+            border: 1px solid rgba(255, 216, 0, 0.2);
+
+            &::placeholder {
+              color: rgba(255, 250, 235, 0.5);
+            }
+          }
+
+          .clearSearchBtn {
+            color: $mistral-beige-medium;
+
+            &:hover {
+              background-color: rgba(255, 216, 0, 0.1);
+              color: $mistral-beige-light;
+            }
+          }
+        }
+      }
     }
 
     .conversationItem {
       &:hover {
-        background-color: rgba(255, 255, 255, 0.05);
+        background-color: rgba(255, 216, 0, 0.05);
       }
 
       &.active {
-        background-color: rgba(16, 163, 127, 0.2);
+        background-color: rgba(255, 216, 0, 0.15);
+        border-left: 3px solid $mistral-yellow;
+      }
+
+      .conversationContent {
+        .conversationTitle {
+          color: $mistral-beige-light;
+        }
+
+        .conversationDate {
+          color: $mistral-beige-medium;
+        }
+      }
+
+      .deleteBtn {
+        color: $mistral-beige-medium;
+
+        &:hover {
+          color: $mistral-red;
+          background-color: rgba(225, 5, 0, 0.15);
+        }
       }
     }
 
-    .deleteBtn {
-      color: $text-dark;
-
-      &:hover {
-        color: #ff4444;
-        background-color: rgba(255, 68, 68, 0.1);
-      }
+    .emptyState {
+      color: $mistral-beige-medium;
     }
 
     .modalContent {
-      background-color: $chat-dark-bg;
-      border: 1px solid $input-dark-border;
+      background-color: $mistral-black-tinted;
+      border: 1px solid rgba(255, 216, 0, 0.2);
     }
 
     .modalTitle {
-      color: $text-dark;
+      color: $mistral-beige-light;
     }
 
     .modalMessage {
-      color: rgba(255, 255, 255, 0.7);
+      color: $mistral-beige-medium;
     }
 
     .modalCancelBtn {
-      background-color: $input-dark-bg;
-      color: $text-dark;
-      border: 1px solid $input-dark-border;
+      background-color: rgba(30, 30, 30, 0.6);
+      color: $mistral-beige-light;
+      border: 1px solid rgba(255, 216, 0, 0.2);
 
       &:hover {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 216, 0, 0.1);
+        border-color: rgba(255, 216, 0, 0.4);
       }
     }
 
@@ -116,9 +151,30 @@
 
     .modelSelector {
       background-color: $input-dark-bg;
-      color: $text-dark;
+      border-color: $input-dark-border;
 
-      select,
+      .modelSelectorText {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .modelSelect {
+        background-color: $chat-dark-bg;
+        color: $text-dark;
+        border-color: $input-dark-border;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23fff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+
+        &:hover {
+          border-color: $primary;
+          background-color: rgba(16, 163, 127, 0.15);
+        }
+
+        &:focus {
+          border-color: $primary;
+          box-shadow: 0 0 0 3px rgba(16, 163, 127, 0.2);
+          background-color: rgba(16, 163, 127, 0.15);
+        }
+      }
+
       option {
         background-color: #444;
         color: $text-dark;
@@ -133,17 +189,38 @@
   top: 1rem;
   z-index: 100;
   padding: 0.5rem 0.75rem;
-  background-color: $primary;
-  color: $header-color;
-  border: none;
-  border-radius: 0.5rem;
+  background-color: rgba(255, 250, 235, 0.9);
+  backdrop-filter: blur(10px);
+  color: $mistral-black;
+  border: 1px solid rgba(255, 216, 0, 0.3);
+  border-radius: 0.75rem;
   cursor: pointer;
   font-size: 1rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: background 0.2s;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
 
   &:hover {
-    background-color: $primary-dark;
+    background-color: rgba(255, 250, 235, 0.95);
+    border-color: rgba(255, 216, 0, 0.5);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 216, 0, 0.3);
+  }
+}
+
+.chatPageWrapper.dark {
+  .darkModeBtn,
+  .sidebarToggle {
+    background-color: rgba(30, 30, 30, 0.8);
+    color: $mistral-beige-light;
+    border: 1px solid rgba(255, 216, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+
+    &:hover {
+      background-color: rgba(30, 30, 30, 0.95);
+      border-color: rgba(255, 216, 0, 0.4);
+      box-shadow: 0 4px 12px rgba(255, 216, 0, 0.3);
+    }
   }
 }
 
@@ -166,34 +243,127 @@
   top: 1rem;
   right: 5.5rem;
   z-index: 100;
-  background-color: $primary;
-  color: $header-color;
-  border-radius: 0.5rem;
-  padding: 0.25rem 0.5rem;
-  font-size: 0.9rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 250, 235, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 216, 0, 0.3);
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  font-family: Arial, sans-serif;
 
   @media (max-width: 768px) {
     right: 4rem;
+    padding: 0.4rem 0.6rem;
   }
 
-  select {
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    border: none;
-    background-color: white;
-    color: #333;
-    font-size: 0.9rem;
+  &:hover {
+    box-shadow: 0 4px 12px rgba(255, 216, 0, 0.3);
+    transform: translateY(-1px);
+    background-color: rgba(255, 250, 235, 0.95);
+    border-color: rgba(255, 216, 0, 0.5);
+  }
+
+  .modelSelectorIcon {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  .modelSelectorLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
     cursor: pointer;
+  }
+
+  .modelSelectorText {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: $mistral-black;
+    white-space: nowrap;
+    font-family: Arial, sans-serif;
+  }
+
+  .modelSelect {
+    padding: 0.35rem 0.75rem;
+    padding-right: 2rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 216, 0, 0.3);
+    background-color: rgba(255, 250, 235, 0.8);
+    color: $mistral-black;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23FF8205' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 12px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: rgba(255, 216, 0, 0.5);
+      background-color: rgba(255, 216, 0, 0.1);
+    }
 
     &:focus {
-      outline: none;
-      box-shadow: 0 0 0 2px rgba(16, 163, 127, 0.5);
+      border-color: rgba(255, 216, 0, 0.6);
+      box-shadow: 0 0 0 3px rgba(255, 216, 0, 0.2);
+      background-color: rgba(255, 216, 0, 0.1);
     }
   }
 
   option {
-    padding: 0.25rem 0.5rem;
+    padding: 0.5rem;
+    background-color: $mistral-beige-light;
+    color: $mistral-black;
+    font-family: Arial, sans-serif;
+  }
+}
+
+.chatPageWrapper.dark {
+  .modelSelector {
+    background-color: rgba(30, 30, 30, 0.8);
+    border: 1px solid rgba(255, 216, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+
+    &:hover {
+      background-color: rgba(30, 30, 30, 0.95);
+      border-color: rgba(255, 216, 0, 0.4);
+    }
+
+    .modelSelectorText {
+      color: $mistral-beige-light;
+    }
+
+    .modelSelect {
+      border: 1px solid rgba(255, 216, 0, 0.2);
+      background-color: rgba(30, 30, 30, 0.6);
+      color: $mistral-beige-light;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23FFD800' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+
+      &:hover {
+        border-color: rgba(255, 216, 0, 0.5);
+        background-color: rgba(255, 216, 0, 0.1);
+      }
+
+      &:focus {
+        border-color: rgba(255, 216, 0, 0.6);
+        box-shadow: 0 0 0 3px rgba(255, 216, 0, 0.2);
+        background-color: rgba(255, 216, 0, 0.1);
+      }
+    }
+
+    option {
+      background-color: $mistral-black-tinted;
+      color: $mistral-beige-light;
+    }
   }
 }
 
@@ -203,77 +373,78 @@
   height: 100vh;
   max-width: 720px;
   margin: 0 auto;
-  border-radius: 8px;
-  overflow: hidden;
-  background-color: $chat-bg;
+  background-color: transparent;
+  position: relative;
 }
 
-.header {
-  background-color: $header-bg;
-  color: $header-color;
-  padding: 0.3rem;
-  text-align: center;
-  font-weight: bold;
+// Mistral Logo
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 2rem;
+}
 
-  h1 {
-    font-size: 2.4rem;
-    font-weight: 700;
-    line-height: 1.2;
+.mistralLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .highlight {
-      background: linear-gradient(90deg, $primary, $primary-dark);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+.logoImage {
+  width: 200px;
+  height: 200px;
+  filter: drop-shadow(0 4px 20px rgba(225, 5, 0, 0.3));
+  transition: transform 0.3s ease;
 
-    .subtitle {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: $neutral-dark;
-      margin-top: 0.25rem;
-    }
+  &:hover {
+    transform: scale(1.05);
   }
 }
 
 .messagesContainer {
   flex: 1;
-  padding: 1rem;
+  padding: 2rem 1rem 8rem;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
+  max-width: 100%;
+
+  &:empty {
+    display: none;
+  }
 
   &::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
 
   &::-webkit-scrollbar-track {
-    background: $neutral-light;
-    border-radius: 4px;
+    background: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $primary;
-    border-radius: 4px;
-    border: 2px solid $neutral-light;
+    background-color: rgba(255, 216, 0, 0.3);
+    border-radius: 3px;
 
     &:hover {
-      background-color: $primary-dark;
+      background-color: rgba(255, 216, 0, 0.5);
     }
   }
 
   scrollbar-width: thin;
-  scrollbar-color: $primary $neutral-light;
+  scrollbar-color: rgba(255, 216, 0, 0.3) transparent;
 }
 
 .message {
-  padding: 0.75rem 1rem;
-  border-radius: 0.75rem;
-  max-width: 80%;
-  line-height: 1.5;
+  padding: 1rem 1.25rem;
+  border-radius: 1.25rem;
+  max-width: 85%;
+  line-height: 1.6;
   font-size: 1rem;
   white-space: pre-wrap;
+  word-wrap: break-word;
 
   strong {
     font-weight: 600;
@@ -293,87 +464,227 @@
   }
 
   code {
-    background: #eee;
+    background: rgba(233, 226, 203, 0.6);
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
-    font-family: monospace;
+    font-family: Arial, monospace;
     font-size: 0.9em;
+    color: $mistral-black;
   }
 
   pre > code {
     display: block;
-    background: #222;
-    color: #f8f8f2;
+    background: rgba(233, 226, 203, 0.8);
+    color: $mistral-black;
     padding: 0.75rem;
     border-radius: 0.5rem;
     overflow-x: auto;
     font-size: 0.9em;
+    font-family: Arial, monospace;
   }
 
   a {
-    color: $primary;
+    color: $mistral-orange;
     text-decoration: underline;
+
+    &:hover {
+      color: $mistral-orange-dark;
+    }
+  }
+}
+
+.chatPageWrapper.dark {
+  .message {
+    code {
+      background: rgba(30, 30, 30, 0.6);
+      color: $mistral-beige-light;
+    }
+
+    pre > code {
+      background: rgba(0, 0, 0, 0.5);
+      color: $mistral-beige-light;
+    }
+
+    a {
+      color: $mistral-yellow;
+
+      &:hover {
+        color: $mistral-orange-light;
+      }
+    }
   }
 }
 
 .user {
   align-self: flex-end;
-  background-color: $primary;
-  color: $header-color;
+  background: linear-gradient(135deg, rgba(225, 5, 0, 0.15) 0%, rgba(250, 80, 15, 0.15) 25%, rgba(255, 130, 5, 0.15) 50%, rgba(255, 175, 0, 0.15) 75%, rgba(255, 216, 0, 0.15) 100%);
+  border: 1px solid rgba(255, 216, 0, 0.3);
+  color: $mistral-black;
+  backdrop-filter: blur(10px);
 }
 
 .assistant {
   align-self: flex-start;
-  background-color: $assistant-bg;
-  color: $text-color;
+  background-color: rgba(255, 250, 235, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: $mistral-black;
+  backdrop-filter: blur(10px);
+}
+
+.chatPageWrapper.dark {
+  .user {
+    background: linear-gradient(135deg, rgba(225, 5, 0, 0.15) 0%, rgba(250, 80, 15, 0.15) 25%, rgba(255, 130, 5, 0.15) 50%, rgba(255, 175, 0, 0.15) 75%, rgba(255, 216, 0, 0.15) 100%);
+    border: 1px solid rgba(255, 216, 0, 0.3);
+    color: $mistral-beige-light;
+  }
+
+  .assistant {
+    background-color: rgba(30, 30, 30, 0.6);
+    border: 1px solid rgba(255, 250, 235, 0.1);
+    color: $mistral-beige-light;
+  }
 }
 
 .inputContainer {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 720px;
+  padding: 0 1rem;
+  z-index: 10;
+
+  &.inputContainerCentered {
+    bottom: auto;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .inputWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgba(255, 250, 235, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 216, 0, 0.3);
+    border-radius: 2rem;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+
+    &:focus-within {
+      border-color: rgba(255, 216, 0, 0.6);
+      box-shadow: 0 4px 30px rgba(255, 216, 0, 0.3);
+      background-color: rgba(255, 250, 235, 0.95);
+    }
+  }
+}
+
+.chatPageWrapper.dark {
+  .inputContainer .inputWrapper {
+    background-color: rgba(30, 30, 30, 0.8);
+    border: 1px solid rgba(255, 216, 0, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+
+    &:focus-within {
+      border-color: rgba(255, 216, 0, 0.5);
+      box-shadow: 0 4px 30px rgba(255, 216, 0, 0.2);
+      background-color: rgba(30, 30, 30, 0.95);
+    }
+  }
+}
+
+.inputIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.newChatIconBtn {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 216, 0, 0.2);
+  background-color: transparent;
+  color: $mistral-beige-light;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  border-top: 1px solid $neutral-dark;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+
+        &:hover {
+          background-color: rgba(255, 216, 0, 0.15);
+          color: $mistral-orange;
+          border-color: rgba(255, 216, 0, 0.5);
+        }
 }
 
 .chatInput {
   flex: 1;
   max-height: 8rem;
-  padding: 0.75rem 1rem;
-  border-radius: 1rem;
-  border: 1px solid $input-border;
+  padding: 0.5rem 0;
+  border: none;
+  background: transparent;
+  color: $mistral-black;
   outline: none;
   font-size: 1rem;
   resize: none;
   overflow-y: auto;
-  line-height: 1.4;
+  line-height: 1.5;
+  font-family: Arial, sans-serif;
+
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
 
   &:disabled {
-    background-color: $neutral-light;
+    opacity: 0.5;
+  }
+}
+
+.chatPageWrapper.dark .chatInput {
+  color: $mistral-beige-light;
+
+  &::placeholder {
+    color: rgba(255, 250, 235, 0.5);
   }
 }
 
 .sendButton {
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   border: none;
-  background-color: $primary;
-  color: $header-color;
+  background: linear-gradient(135deg, $mistral-red 0%, $mistral-orange-dark 25%, $mistral-orange 50%, $mistral-orange-light 75%, $mistral-yellow 100%);
+  color: $mistral-black;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s ease-in-out;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  font-weight: 600;
+  font-family: Arial, sans-serif;
 
   &:hover:not(:disabled) {
-    background-color: $primary-dark;
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(255, 216, 0, 0.5);
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.95);
   }
 
   &:disabled {
-    opacity: 0.6;
+    opacity: 0.4;
     cursor: not-allowed;
+    transform: none;
   }
 }
 
@@ -383,14 +694,15 @@
   top: 0;
   height: 100vh;
   width: 280px;
-  background-color: $chat-bg;
-  border-right: 1px solid $neutral-dark;
+  background-color: $mistral-beige-light;
+  border-right: 1px solid rgba(255, 216, 0, 0.2);
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
   z-index: 1000;
   display: flex;
   flex-direction: column;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
 
   &.sidebarOpen {
     transform: translateX(0);
@@ -398,17 +710,18 @@
 
   .sidebarHeader {
     padding: 1rem;
-    border-bottom: 1px solid $neutral-dark;
+    border-bottom: 1px solid rgba(255, 216, 0, 0.2);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: $header-bg;
+    background-color: $mistral-beige-light;
 
     h2 {
       font-size: 1.25rem;
       font-weight: 600;
       margin: 0;
-      color: $header-color;
+      color: $mistral-black;
+      font-family: Arial, sans-serif;
     }
 
     .newChatBtn {
@@ -416,24 +729,26 @@
       height: 2rem;
       border-radius: 0.5rem;
       border: none;
-      background-color: $primary;
-      color: $header-color;
+      background: linear-gradient(135deg, $mistral-red 0%, $mistral-orange-dark 25%, $mistral-orange 50%, $mistral-orange-light 75%, $mistral-yellow 100%);
+      color: $mistral-black;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.2s;
+      transition: all 0.2s;
+      font-weight: 600;
 
       &:hover {
-        background-color: $primary-dark;
+        transform: scale(1.1);
+        box-shadow: 0 2px 8px rgba(255, 216, 0, 0.4);
       }
     }
   }
 
   .searchContainer {
     padding: 0.75rem;
-    border-bottom: 1px solid $neutral-dark;
-    background-color: $chat-bg;
+    border-bottom: 1px solid rgba(255, 216, 0, 0.2);
+    background-color: $mistral-beige-light;
 
     .searchInputWrapper {
       position: relative;
@@ -443,28 +758,30 @@
       .searchIcon {
         position: absolute;
         left: 0.75rem;
-        color: $neutral-dark;
+        color: $mistral-black;
         font-size: 0.9rem;
         pointer-events: none;
+        opacity: 0.6;
       }
 
       .searchInput {
         width: 100%;
         padding: 0.5rem 0.75rem 0.5rem 2.25rem;
         border-radius: 0.5rem;
-        border: 1px solid $neutral-dark;
-        background-color: $input-bg;
-        color: $text-color;
+        border: 1px solid rgba(255, 216, 0, 0.3);
+        background-color: rgba(255, 250, 235, 0.8);
+        color: $mistral-black;
         font-size: 0.9rem;
+        font-family: Arial, sans-serif;
         outline: none;
         transition: border-color 0.2s;
 
         &:focus {
-          border-color: $primary;
+          border-color: rgba(255, 216, 0, 0.6);
         }
 
         &::placeholder {
-          color: $neutral-dark;
+          color: rgba(0, 0, 0, 0.4);
         }
       }
 
@@ -476,7 +793,8 @@
         border-radius: 50%;
         border: none;
         background-color: transparent;
-        color: $neutral-dark;
+        color: $mistral-black;
+        opacity: 0.6;
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -522,7 +840,8 @@
       justify-content: center;
       padding: 2rem;
       text-align: center;
-      color: $neutral-dark;
+      color: rgba(0, 0, 0, 0.6);
+      font-family: Arial, sans-serif;
 
       p {
         margin-bottom: 1rem;
@@ -532,14 +851,17 @@
         padding: 0.5rem 1rem;
         border-radius: 0.5rem;
         border: none;
-        background-color: $primary;
-        color: $header-color;
+        background: linear-gradient(135deg, $mistral-red 0%, $mistral-orange-dark 25%, $mistral-orange 50%, $mistral-orange-light 75%, $mistral-yellow 100%);
+        color: $mistral-black;
         cursor: pointer;
         font-size: 0.9rem;
-        transition: background 0.2s;
+        font-family: Arial, sans-serif;
+        font-weight: 600;
+        transition: all 0.2s;
 
         &:hover {
-          background-color: $primary-dark;
+          transform: scale(1.05);
+          box-shadow: 0 2px 8px rgba(255, 216, 0, 0.4);
         }
       }
     }
@@ -556,7 +878,7 @@
       gap: 0.5rem;
 
       &:hover {
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: rgba(255, 216, 0, 0.05);
 
         .deleteBtn {
           opacity: 1;
@@ -564,8 +886,8 @@
       }
 
       &.active {
-        background-color: rgba(16, 163, 127, 0.15);
-        border-left: 3px solid $primary;
+        background-color: rgba(255, 216, 0, 0.15);
+        border-left: 3px solid $mistral-yellow;
       }
 
       .conversationContent {
@@ -575,15 +897,18 @@
         .conversationTitle {
           font-size: 0.9rem;
           font-weight: 500;
+          font-family: Arial, sans-serif;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
           margin-bottom: 0.25rem;
+          color: $mistral-black;
         }
 
         .conversationDate {
           font-size: 0.75rem;
-          color: $neutral-dark;
+          color: rgba(0, 0, 0, 0.6);
+          font-family: Arial, sans-serif;
         }
       }
 
@@ -593,7 +918,7 @@
         border-radius: 0.25rem;
         border: none;
         background-color: transparent;
-        color: $neutral-dark;
+        color: rgba(0, 0, 0, 0.6);
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -641,27 +966,30 @@
   animation: fadeIn 0.2s ease-in-out;
 
   .modalContent {
-    background-color: $chat-bg;
+    background-color: $mistral-beige-light;
     border-radius: 1rem;
     padding: 2rem;
     max-width: 90%;
     width: 400px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     animation: slideUp 0.3s ease-out;
-    border: 1px solid $neutral-dark;
+    border: 1px solid rgba(255, 216, 0, 0.3);
+    font-family: Arial, sans-serif;
 
     .modalTitle {
       font-size: 1.5rem;
       font-weight: 600;
       margin: 0 0 1rem 0;
-      color: $text-color;
+      color: $mistral-black;
+      font-family: Arial, sans-serif;
     }
 
     .modalMessage {
       font-size: 1rem;
-      color: $neutral-dark;
+      color: rgba(0, 0, 0, 0.7);
       margin: 0 0 1.5rem 0;
       line-height: 1.5;
+      font-family: Arial, sans-serif;
     }
 
     .modalButtons {
@@ -676,31 +1004,67 @@
         border: none;
         font-size: 1rem;
         font-weight: 500;
+        font-family: Arial, sans-serif;
         cursor: pointer;
         transition: all 0.2s;
       }
 
       .modalCancelBtn {
-        background-color: $neutral-light;
-        color: $text-color;
+        background-color: rgba(233, 226, 203, 0.8);
+        color: $mistral-black;
+        border: 1px solid rgba(255, 216, 0, 0.3);
 
         &:hover {
-          background-color: darken($neutral-light, 10%);
+          background-color: rgba(255, 216, 0, 0.15);
+          border-color: rgba(255, 216, 0, 0.5);
         }
       }
 
       .modalConfirmBtn {
-        background-color: #ff4444;
-        color: white;
+        background-color: $mistral-red;
+        color: $mistral-beige-light;
 
         &:hover {
-          background-color: #cc3333;
+          background-color: darken($mistral-red, 5%);
           transform: translateY(-1px);
-          box-shadow: 0 4px 8px rgba(255, 68, 68, 0.3);
+          box-shadow: 0 4px 8px rgba(225, 5, 0, 0.4);
         }
 
         &:active {
           transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
+.chatPageWrapper.dark {
+  .modalOverlay {
+    background-color: rgba(0, 0, 0, 0.7);
+
+    .modalContent {
+      background-color: $mistral-black-tinted;
+      border: 1px solid rgba(255, 216, 0, 0.2);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+
+      .modalTitle {
+        color: $mistral-beige-light;
+      }
+
+      .modalMessage {
+        color: $mistral-beige-medium;
+      }
+
+      .modalButtons {
+        .modalCancelBtn {
+          background-color: rgba(30, 30, 30, 0.6);
+          color: $mistral-beige-light;
+          border: 1px solid rgba(255, 216, 0, 0.2);
+
+          &:hover {
+            background-color: rgba(255, 216, 0, 0.1);
+            border-color: rgba(255, 216, 0, 0.4);
+          }
         }
       }
     }

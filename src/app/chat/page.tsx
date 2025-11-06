@@ -240,9 +240,14 @@ export default function ChatPage() {
       </button>
 
       <div className={styles.modelSelector}>
-        <label>
-          Model:
-          <select value={model} onChange={(e) => setModel(e.target.value)}>
+        <div className={styles.modelSelectorIcon}>🤖</div>
+        <label className={styles.modelSelectorLabel}>
+          <span className={styles.modelSelectorText}>AI Model</span>
+          <select 
+            value={model} 
+            onChange={(e) => setModel(e.target.value)}
+            className={styles.modelSelect}
+          >
             {models.map((m) => (
               <option key={m.value} value={m.value}>
                 {m.label}
@@ -368,14 +373,18 @@ export default function ChatPage() {
       </button>
 
       <div className={styles.chatWrapper}>
-        <header className={styles.header}>
-          <h1>
-            <span className={styles.highlight}>Mistral</span> Chat
-            <span className={styles.subtitle}>
-              Chatbot demo for the Internship{" "}
-            </span>
-          </h1>
-        </header>
+
+        {messages.length === 0 && (
+          <div className={styles.logoContainer}>
+            <div className={styles.mistralLogo}>
+              <img 
+                src={darkMode ? "/mistral-brand-asset/m-white.svg" : "/mistral-brand-asset/m-black.svg"} 
+                alt="Mistral AI Logo" 
+                className={styles.logoImage}
+              />
+            </div>
+          </div>
+        )}
 
         <div className={styles.messagesContainer}>
           {messages.map((msg, i) => (
@@ -398,23 +407,34 @@ export default function ChatPage() {
           ))}
           <div ref={messagesEndRef} />
         </div>
-        <div className={styles.inputContainer}>
-          <textarea
-            className={styles.chatInput}
-            placeholder="Type a message..."
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            disabled={isLoading}
-            rows={1}
-          />
-          <button
-            className={styles.sendButton}
-            onClick={handleSend}
-            disabled={isLoading}
-          >
-            {isLoading ? "..." : <FontAwesomeIcon icon={faPaperPlane} />}
-          </button>
+
+        <div className={`${styles.inputContainer} ${messages.length === 0 ? styles.inputContainerCentered : ""}`}>
+          <div className={styles.inputWrapper}>
+            <img 
+              src={darkMode ? "/mistral-brand-asset/m-white.svg" : "/mistral-brand-asset/m-black.svg"} 
+              alt="Mistral" 
+              className={styles.inputIcon}
+            />
+            <button className={styles.newChatIconBtn} onClick={createNewConversation} title="New Chat">
+              <FontAwesomeIcon icon={faPlus} />
+            </button>
+            <textarea
+              className={styles.chatInput}
+              placeholder="Ask Mistral anything"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              disabled={isLoading}
+              rows={1}
+            />
+            <button
+              className={styles.sendButton}
+              onClick={handleSend}
+              disabled={isLoading || !input.trim()}
+            >
+              {isLoading ? "..." : <FontAwesomeIcon icon={faPaperPlane} />}
+            </button>
+          </div>
         </div>
       </div>
     </div>
